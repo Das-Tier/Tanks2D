@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+**/TestResults/
+*.suo
+*.user
+*.dbmdl
+*.v12.suo

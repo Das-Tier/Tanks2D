@@ -1,0 +1,8 @@
+D:\EPAM\ActualProject\Last\DesktopUI\bin\Debug\DesktopUI.exe
+D:\EPAM\ActualProject\Last\DesktopUI\bin\Debug\DesktopUI.pdb
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\DesktopUI.Properties.Resources.resources
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\DesktopUI.exe
+D:\EPAM\ActualProject\Last\DesktopUI\obj\x86\Debug\DesktopUI.pdb
