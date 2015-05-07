@@ -15,6 +15,9 @@ namespace Tanks.GameEngine
             MapArray = new char[20, 20];
             int index = 0;
             char[] mapData = null;
+            
+            // Review remark from IP:
+            // стрічкові константи варто зберігати або у константах рівня класу, а, що ще краще - в файлах конфігурації
             string path = @"../../../Tanks.GameEngine/Maps/map_1.txt";
             using (StreamReader reader = new StreamReader(path))
             {

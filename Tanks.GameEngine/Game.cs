@@ -8,6 +8,8 @@ using Tanks.GameEngine.GameObjects.UnmovableObjects;
 
 namespace Tanks.GameEngine
 {
+    // Review remark from IP:
+    // бажано винести в окремий файл
     public enum GameStatus
     {
         ReadyToStart, InProgress, Completed
@@ -16,10 +18,15 @@ namespace Tanks.GameEngine
     {
         public GameStatus gameStatus;
         #region Public Fields
+        // Review remark from IP:
+         // а чому поля класу  - публічні ?
         public int score;
         public int enemiesCount;
         public Player Player { get; set; }
         public GameBoard GameBoard { get; protected set; }
+
+        // Review remark from IP:
+        // Імені пропертів бажано починати з великих літер
         public List<Bullet> bullets { get; set; }
         public List<Enemy> enemies { get; set; }
         public List<Wall> walls { get; set; }

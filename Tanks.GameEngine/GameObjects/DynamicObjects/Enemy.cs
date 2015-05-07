@@ -48,6 +48,8 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
 
         public bool CheckMoveOn(int newX, int newY)
         {
+            // Review remark from IP:
+            // можна і треба відрефакторити в один рядок !
             if (Board != null)
             {
                 return this.Board.IsCorrectPosition(this, newX, newY);
