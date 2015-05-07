@@ -10,6 +10,8 @@ namespace Tanks.GameEngine
 {
     public class GameBoard
     {
+        // Review remark from IP:
+        // правила іменування приватних полів варто не змішувати з такими для локальних змінних
         private List<IGameObject> gameObjects = new List<IGameObject>();
 
         public IEnumerable<IGameObject> GameObjects
@@ -37,14 +39,18 @@ namespace Tanks.GameEngine
 
         public bool IsCorrectPosition(IGameObject gameObject, int newX, int newY)
         {
-            if (this.gameObjects.Any(r => r.X == newX && r.Y == newY) == true)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            //if (this.gameObjects.Any(r => r.X == newX && r.Y == newY) == true)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    return true;
+            //}
+
+            // Review remark from IP:
+            // так значно лаконічніше ))
+            return !this.gameObjects.Any(r => r.X == newX && r.Y == newY);
         }
 
         public bool BulletObjectCollision(Bullet bullet, int newX, int newY)

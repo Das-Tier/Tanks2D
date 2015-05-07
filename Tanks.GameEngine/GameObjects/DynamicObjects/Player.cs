@@ -17,6 +17,9 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
             : base(x, y)
         {
             Direction = Direction.Up;
+
+            // Review remark from IP:
+            // константи варто прописувати на рівні класу, або вичитувати з конфігів
             Lives = 4;
         }
         #endregion
