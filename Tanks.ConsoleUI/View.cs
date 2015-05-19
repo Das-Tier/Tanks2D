@@ -13,7 +13,7 @@ namespace Tanks.ConsoleUI
         public static void ShowStats(Game game)
         {
             Console.SetCursorPosition(24, 1);
-            Console.WriteLine("Lives:{0}; Score:{1}; Enemies:{2}", game.Player.Lives, game.score, game.enemiesCount); 
+            Console.WriteLine("Lives:{0}; Score:{1}; Enemies:{2}", game.Player.Lives, game.Score, game.enemiesCount); 
         }
         #endregion
         #region MapVisaulisation
@@ -44,7 +44,7 @@ namespace Tanks.ConsoleUI
         #region Show-Hide Methods
         public static void ShowBullet(Game game)
         {
-            foreach (var i in game.bullets)
+            foreach (var i in game.Bullets)
             {
                 if (i.IsAlive == true)
                 {
@@ -61,7 +61,7 @@ namespace Tanks.ConsoleUI
         
         public static void HideBullet(Game game)
         {
-            foreach (var i in game.bullets)
+            foreach (var i in game.Bullets)
             {
                 Console.SetCursorPosition(i.X, i.Y);
                 Console.Write(' ');
@@ -82,7 +82,7 @@ namespace Tanks.ConsoleUI
 
         public static void HideEnemy(Game game)
         {
-            foreach (var i in game.enemies)
+            foreach (var i in game.Enemies)
             {
                 Console.SetCursorPosition(i.X, i.Y);
                 Console.Write(' ');
@@ -91,7 +91,7 @@ namespace Tanks.ConsoleUI
 
         public static void ShowEnemy(Game game)
         {
-            foreach (var i in game.enemies)
+            foreach (var i in game.Enemies)
             {
                 if (i.IsAlive == true)
                 {
@@ -99,6 +99,13 @@ namespace Tanks.ConsoleUI
                     Console.Write("E");
                 }
             }
+        }
+        public static void ShowBase(Game game)
+        {
+            Console.SetCursorPosition(game.PlBase.X, game.PlBase.Y);
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("B");
+            Console.BackgroundColor = ConsoleColor.Black;
         }
         #endregion
     }

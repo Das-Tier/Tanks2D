@@ -6,6 +6,7 @@ using Tanks.GameEngine.GameObjects.DynamicObjects;
 using Tanks.GameEngine.GameObjects.UnmovableObjects;
 using Tanks.GameEngine.GameObjects;
 using System.Collections.Generic;
+using Tanks;
 
 namespace GameEngineTest
 {
@@ -18,17 +19,21 @@ namespace GameEngineTest
             GameBoard board = new GameBoard();
             Assert.IsNotNull(board);
         }
+        
         [TestMethod]
-        public void TestCanBePlaced()
+        public void CheckBaseIsAlive()
+        {
+            Game game = new Game();
+            game.Start();
+            Assert.IsTrue(game.CheckBaseIsAlive(game.PlBase));
+        }
+        [TestMethod]
+        public void CheckEnemyMoveOn()
         {
             GameBoard board = new GameBoard();
-            IGameObject p1 = new Player(1, 1);
-            IGameObject p2 = new Player(2, 2);
-            board.AddObject(p1);
-            board.AddObject(p2);
-            Assert.IsTrue(board.CanBePlaced(p1, 3, 2));
-            Assert.IsTrue(board.CanBePlaced(p1, 3, 5));
-            Assert.IsFalse(board.CanBePlaced(p1, 2, 2));
+            Enemy e = new Enemy(1, 1);
+            e.MoveOn();
+            Assert.IsTrue(e.X != 1 || e.Y != 1);
         }
         [TestMethod]
         public void TestAddObject()
@@ -51,10 +56,10 @@ namespace GameEngineTest
         {
             Game game = new Game();
             game.Start();
-            Assert.IsTrue(game.score == 0);
+            Assert.IsTrue(game.Score == 0);
             Assert.IsTrue(game.gameStatus == GameStatus.InProgress);
-            Assert.IsNotNull(game.bullets);
-            Assert.IsNotNull(game.enemies);
+            Assert.IsNotNull(game.Bullets);
+            Assert.IsNotNull(game.Enemies);
             Assert.IsNotNull(game.Player);
         }
         [TestMethod]
@@ -72,7 +77,7 @@ namespace GameEngineTest
             Game game = new Game();
             game.Start();
             game.RaiseScore();
-            Assert.IsTrue(game.score == 100);
+            Assert.IsTrue(game.Score == 100);
         }
         [TestMethod]
         public void CheckFire()
@@ -80,14 +85,13 @@ namespace GameEngineTest
             Game game = new Game();
             game.Start();
             game.Fire(game.Player);
-            Bullet bullet = game.bullets.Last();
+            Bullet bullet = game.Bullets.Last();
             Assert.IsTrue(game.Player.X == bullet.X && game.Player.Y == bullet.Y && game.Player.Direction == bullet.Direction);
         }
         [TestMethod]
         public void TestLoadMap()
         {
-            World world = new World();
-            Assert.IsNotNull(world);
+            Assert.IsNotNull(World.MapArray);
         }
         [TestMethod]
         public void TestPlayerCheckMoveOn()
@@ -96,7 +100,7 @@ namespace GameEngineTest
             Player p1 = new Player(1, 1);
             board.AddObject(p1);
             p1.MoveOn(1, 1);
-            Assert.IsTrue(p1.X == 2 && p1.Y == 2);
+            Assert.IsTrue(p1.X== 2 && p1.Y == 2);
             Assert.IsTrue(p1.CheckMoveOn(1, 1));
         }
         [TestMethod]
@@ -158,7 +162,7 @@ namespace GameEngineTest
             GameBoard board = new GameBoard();
             Enemy e = new Enemy(14,1);
             game.EnemyFire(e);
-            Assert.IsTrue(game.bullets.Count != 0);
+            Assert.IsTrue(game.Bullets.Count != 0);
         }
         [TestMethod]
         public void CheckBulletMove()
@@ -183,30 +187,30 @@ namespace GameEngineTest
         {
             Game game = new Game();
             game.Start();
-            int start=game.enemies.Count;
+            int start=game.Enemies.Count;
             game.AddEnemy();
-            Assert.IsTrue(game.enemies.Count != start);
+            Assert.IsTrue(game.Enemies.Count != start);
         }
         [TestMethod]
         public void CheckEnemyIsAlive()
         {
             Game game = new Game();
             game.Start();
-            int start = game.enemies.Count;
-            game.enemies[1].IsAlive = false;
+            int start = game.Enemies.Count;
+            game.Enemies[1].IsAlive = false;
             game.CheckEnemiesAlive();
-            Assert.IsTrue(game.enemies.Count == start);
-            Assert.IsTrue(game.score == 100);
+            Assert.IsFalse(game.Enemies.Count == start);
+            Assert.IsTrue(game.Score == 100);
         }
         [TestMethod]
         public void CheckBulletIsAlive()
         {
             Game game = new Game();
             game.Start();
-            game.bullets.Add(new Bullet(3, 3, Direction.Down, true));
-            game.bullets[0].IsAlive = false;
+            game.Bullets.Add(new Bullet(3, 3, Direction.Down, true));
+            game.Bullets[0].IsAlive = false;
             game.CheckBulletsAlive();
-            Assert.IsTrue(game.bullets.Count == 0);
+            Assert.IsTrue(game.Bullets.Count == 0);
         }
         [TestMethod]
         public void CheckEnemyMove()
@@ -242,11 +246,11 @@ namespace GameEngineTest
         {
             Game game = new Game();
             game.Start();
-            int start = game.walls.Count;
+            int start = game.Walls.Count;
             Wall wall = new Wall(2, 1);
-            game.walls.Add(wall);
+            game.Walls.Add(wall);
             game.DestructWall(wall);
-            Assert.IsTrue(start == game.walls.Count);
+            Assert.IsTrue(start == game.Walls.Count);
         }
         [TestMethod]
         public void CheckPlayerReborn()

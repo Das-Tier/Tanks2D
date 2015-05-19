@@ -9,17 +9,19 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
     public class Enemy : BaseGameObject, IMovable
     {
         #region Properties
+        private Random randomDirect { get; set; }
         public Direction Direction { get; set; }
-        Random changeDirect = new Random();
         #endregion
-
+               
         #region Constructor
         public Enemy(int x, int y)
             : base(x, y)
         {
+            X = x;
+            Y = y;
             Direction = Direction.Down;
             IsAlive = true;
-            Random randomDirect = new Random();
+            randomDirect = new Random();
         }
         #endregion
 
@@ -30,29 +32,27 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
             int newY = Y;
             switch (Direction)
             {
-                case Direction.Down: newY++; break;
-                case Direction.Up: newY--; break;
-                case Direction.Left: newX--; break;
-                case Direction.Right: newX++; break;
+                case Direction.Down: newY += 1; break;
+                case Direction.Up: newY -= 1; break;
+                case Direction.Left: newX -= 1; break;
+                case Direction.Right: newX += 1; break;
             }
-            if (CheckMoveOn(newX, newY))
+            if (CheckMoveOn(newX, newY)==true)
             {
                 X = newX;
                 Y = newY;
             }
             else
             {
-                Direction = (Direction)changeDirect.Next(0, 5);
+                Direction = (Direction)randomDirect.Next(0, 5);
             }
         }
 
         public bool CheckMoveOn(int newX, int newY)
         {
-            // Review remark from IP:
-            // можна і треба відрефакторити в один рядок !
             if (Board != null)
             {
-                return this.Board.IsCorrectPosition(this, newX, newY);
+                return Board.IsCorrectPosition(this, newX, newY);
             }
             else
             {

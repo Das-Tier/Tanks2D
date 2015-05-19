@@ -10,6 +10,8 @@ namespace Tanks.GameEngine.GameObjects.UnmovableObjects
         public Concrete(int x, int y)
             : base(x, y)
         {
+            X = x;
+            Y = y;
             IsAlive = true;
         }
     }

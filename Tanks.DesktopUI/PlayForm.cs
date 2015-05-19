@@ -50,20 +50,20 @@ namespace DesktopUI
         {            
             HideEnemy(game);
             HideBullet(game);
-            for (int i = 0; i < game.enemies.Count; i++)
+            for (int i = 0; i < game.Enemies.Count; i++)
             {
                 countIter++;
-                game.enemies[i].MoveOn();
+                game.Enemies[i].MoveOn();
                 if (countIter % 10 == 0 && i % 2 == 0)
                 {
-                    game.EnemyFire(game.enemies[i]);
+                    game.EnemyFire(game.Enemies[i]);
                 }
                 if (countIter % 7 == 0 && i % 2 == 1)
                 {
-                    game.EnemyFire(game.enemies[i]);
+                    game.EnemyFire(game.Enemies[i]);
                 }
             }
-            foreach (var i in game.bullets)
+            foreach (var i in game.Bullets)
             {
                 i.MoveOn();
             }
@@ -79,12 +79,12 @@ namespace DesktopUI
                 HidePlayer(game);
                 game.PlayerReborn();
             }
-            for (int i = 0; i < game.walls.Count; i++)
+            for (int i = 0; i < game.Walls.Count; i++)
             {
-                if (game.CheckWallDestruction(game.walls[i]) == true)
+                if (game.CheckWallDestruction(game.Walls[i]) == true)
                 {
-                    HideWall(game.walls[i]);
-                    game.walls.Remove(game.walls[i]);
+                    HideWall(game.Walls[i]);
+                    game.Walls.Remove(game.Walls[i]);
                 }
             }
             ShowPlayer(game);
@@ -145,9 +145,9 @@ namespace DesktopUI
 
         private void ShowInfo(Game game)
         {
-            sh_enemies.Text = game.enemiesCount.ToString();
+            sh_enemies.Text = game.EnemiesCount.ToString();
             sh_lives.Text = game.Player.Lives.ToString();
-            sh_score.Text = game.score.ToString();
+            sh_score.Text = game.Score.ToString();
         }
         
         private void HideWall(Wall wall)
@@ -160,7 +160,7 @@ namespace DesktopUI
 
         private void ShowBullet(Game game)
         {
-            foreach (var i in game.bullets)
+            foreach (var i in game.Bullets)
             {
                 if (i.IsAlive)
                 {
@@ -173,7 +173,7 @@ namespace DesktopUI
 
         private void HideBullet(Game game)
         {
-            foreach (var i in game.bullets)
+            foreach (var i in game.Bullets)
             {
                 Graphics graphics = pbx_GameSpace.CreateGraphics();
                 Bitmap img = Resources.background;
@@ -183,7 +183,7 @@ namespace DesktopUI
 
         private void ShowEnemy(Game game)
         {
-            foreach (var i in game.enemies)
+            foreach (var i in game.Enemies)
             {
                 Graphics graphics = pbx_GameSpace.CreateGraphics();
                 Bitmap img = null;
@@ -201,7 +201,7 @@ namespace DesktopUI
 
         private void HideEnemy(Game game)
         {
-            foreach (var i in game.enemies)
+            foreach (var i in game.Enemies)
             {
                 Graphics graphics = pbx_GameSpace.CreateGraphics();
                 Bitmap img = Resources.background;
@@ -301,7 +301,7 @@ namespace DesktopUI
             timer.Enabled = false;
             this.Dispose();
             PlayGameOverSound();
-            string message = "Your score is " + game.score + ". Thanks for playing!";
+            string message = "Your score is " + game.Score + ". Thanks for playing!";
             MessageBox.Show(message, "GAME OVER");
             new StartForm().Show();
         }

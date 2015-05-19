@@ -46,14 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="PlayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PlayForm.Designer.cs">
+      <DependentUpon>PlayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartForm.Designer.cs">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PlayForm.resx">
+      <DependentUpon>PlayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -64,6 +73,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StartForm.resx">
+      <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,6 +85,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tanks.GameEngine\Tanks.GameEngine.csproj">
+      <Project>{7869E111-3D46-4900-A0CD-A4E56856272A}</Project>
+      <Name>Tanks.GameEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\background.bmp" />
+    <Content Include="Resource\Ball.bmp" />
+    <Content Include="Resource\base.bmp" />
+    <Content Include="Resource\Enemy_base.bmp" />
+    <Content Include="Resource\enemy_downx30.bmp" />
+    <Content Include="Resource\enemy_leftx30.bmp" />
+    <Content Include="Resource\enemy_rightx30.bmp" />
+    <Content Include="Resource\enemy_upx30.bmp" />
+    <Content Include="Resource\explosion1.bmp" />
+    <None Include="Resource\MainIcon.ico" />
+    <Content Include="Resource\skinmini.png" />
+    <Content Include="Resource\tank11.bmp" />
+    <Content Include="Resource\tank21.bmp" />
+    <Content Include="Resource\tank31.bmp" />
+    <Content Include="Resource\tank41.bmp" />
+    <Content Include="Resource\wall2.bmp" />
+    <Content Include="Resource\wall3.bmp" />
+    <None Include="Sounds\pause.wav" />
+    <None Include="Sounds\hit_wall.wav" />
+    <None Include="Sounds\level_start.wav" />
+    <None Include="Sounds\game_over.wav" />
+    <None Include="Sounds\explode.wav" />
+    <None Include="Sounds\shot.wav" />
+    <None Include="Sounds\player_death.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

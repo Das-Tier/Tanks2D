@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Tanks.GameEngine.Game" Collapsed="true">
-    <Position X="12" Y="0.5" Width="1.5" />
+    <Position X="17" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAKAEDAAAAAEIAAAAACEVAAARIAAAAQIAAAA=</HashCode>
+      <HashCode>AAQAAEAEAKAADAAAABEIAAAAAAkVgAARIIAAIQICAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tanks.GameEngine.GameBoard" Collapsed="true">
-    <Position X="13.75" Y="0.5" Width="1.5" />
+    <Position X="18.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAACBAAAAAAAAAAEBAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameBoard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tanks.GameEngine.World" Collapsed="true">
-    <Position X="12" Y="1.5" Width="1.5" />
+    <Position X="17" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>World.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Tanks.GameEngine.GameObjects.BaseGameObject" Collapsed="true">
-    <Position X="5" Y="0.5" Width="1.5" />
+    <Position X="12" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAYAA=</HashCode>
       <FileName>GameObjects\BaseGameObject.cs</FileName>
@@ -30,76 +30,91 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Tanks.GameEngine.GameObjects.DynamicObjects.Bullet">
-    <Position X="5" Y="1.75" Width="1.5" />
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="Tanks.GameEngine.GameObjects.BaseGameObject" FixedToPoint="true">
+      <Path>
+        <Point X="12.75" Y="1.009" />
+        <Point X="12.75" Y="1.375" />
+        <Point X="13.562" Y="1.375" />
+        <Point X="13.562" Y="1.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAAICAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\DynamicObjects\Bullet.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Bottom" Position="1.27" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Tanks.GameEngine.GameObjects.DynamicObjects.Enemy">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Position X="10.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAAICAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAICAAAAAAAAAAAAAAQACAAAAAAAA=</HashCode>
       <FileName>GameObjects\DynamicObjects\Enemy.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Bottom" Position="0.1" />
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Tanks.GameEngine.GameObjects.DynamicObjects.Player">
-    <Position X="9.5" Y="1.75" Width="1.5" />
+    <Position X="14.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAICAAAAAAAAAAAAACQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\DynamicObjects\Player.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Bottom" Position="0.213" />
+    <Lollipop Position="0.113" />
   </Class>
   <Class Name="Tanks.GameEngine.GameObjects.UnmovableObjects.Concrete">
-    <Position X="0.5" Y="1.75" Width="1.5" />
+    <Position X="8" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\UnmovableObjects\Concrete.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Tanks.GameEngine.GameObjects.UnmovableObjects.PlayerBase">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\UnmovableObjects\PlayerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Tanks.GameEngine.GameObjects.UnmovableObjects.Wall">
-    <Position X="2.5" Y="1.75" Width="1.5" />
+    <Position X="8" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\UnmovableObjects\Wall.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="Tanks.GameEngine.GameObjects.IGameObject" Collapsed="true">
-    <Position X="12" Y="2.5" Width="1.5" />
+    <Position X="17" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAYAA=</HashCode>
       <FileName>GameObjects\IGameObject.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Tanks.GameEngine.GameObjects.IMovable" Collapsed="true">
-    <Position X="13.75" Y="2.5" Width="1.5" />
+    <Position X="18.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\IMovable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Tanks.GameEngine.GameObjects.IPlayer" Collapsed="true">
-    <Position X="12" Y="3.25" Width="1.5" />
+    <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>GameObjects\IPlayer.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="Tanks.GameEngine.GameStatus">
-    <Position X="13.75" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
-      <FileName>Game.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Tanks.GameEngine.GameObjects.Direction">
-    <Position X="12" Y="4" Width="1.5" />
+  <Enum Name="Tanks.GameEngine.GameObjects.Direction" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAKACAAAAAAAI=</HashCode>
       <FileName>GameObjects\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Tanks.GameStatus" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>GameStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Tahoma" Size="8.25" />

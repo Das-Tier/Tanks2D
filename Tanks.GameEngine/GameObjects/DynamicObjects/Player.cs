@@ -16,11 +16,11 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
         public Player(int x, int y)
             : base(x, y)
         {
+            X = x;
+            Y = y;
             Direction = Direction.Up;
-
-            // Review remark from IP:
-            // константи варто прописувати на рівні класу, або вичитувати з конфігів
             Lives = 4;
+            
         }
         #endregion
 

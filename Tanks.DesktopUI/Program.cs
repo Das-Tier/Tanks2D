@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
+using Tanks.GameEngine;
+using Tanks.DesktopUI;
+using Tanks.GameEngine.GameObjects.UnmovableObjects;
+
 
 namespace DesktopUI
 {
@@ -15,7 +20,7 @@ namespace DesktopUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new StartForm());
         }
     }
 }

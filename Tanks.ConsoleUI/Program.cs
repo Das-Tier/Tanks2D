@@ -23,7 +23,6 @@ namespace Tanks.ConsoleUI
             {
                 Console.Clear();
                 PlayGame();
-                
             }
         }
 
@@ -34,6 +33,7 @@ namespace Tanks.ConsoleUI
             Game game = new Game();
             game.Start();
             View.DrawMap(game);
+            View.ShowBase(game);
             while (!game.Stop())
             {
                 countIter++;
@@ -41,8 +41,8 @@ namespace Tanks.ConsoleUI
                 #region Unrender
                 View.HideEnemy(game);
                 View.HideBullet(game);
-                
                 #endregion
+
                 #region CheckInput
                 if (Console.KeyAvailable)
                 {
@@ -63,19 +63,19 @@ namespace Tanks.ConsoleUI
                 }
                 #endregion
                 #region UpdatePositions
-                for (int i = 0; i < game.enemies.Count; i++)
+                for (int i = 0; i < game.Enemies.Count; i++)
                 {
-                    game.enemies[i].MoveOn();
+                    game.Enemies[i].MoveOn();
                     if (countIter % 10 == 0 && i % 2 == 0)
                     {
-                        game.EnemyFire(game.enemies[i]);
+                        game.EnemyFire(game.Enemies[i]);
                     }
                     if (countIter % 15 == 0 && i % 2 == 1)
                     {
-                        game.EnemyFire(game.enemies[i]);
+                        game.EnemyFire(game.Enemies[i]);
                     }
                 }
-                foreach (var i in game.bullets)
+                foreach (var i in game.Bullets)
                 {
                     i.MoveOn();
                 }
@@ -88,12 +88,12 @@ namespace Tanks.ConsoleUI
                     View.HidePlayer(game);
                     game.PlayerReborn();
                 }
-                for (int i = 0; i < game.walls.Count; i++)
+                for (int i = 0; i < game.Walls.Count; i++)
                 {
-                    if (game.CheckWallDestruction(game.walls[i])==true)
+                    if (game.CheckWallDestruction(game.Walls[i])==true)
                     {
-                        View.HideWall(game.walls[i]);
-                        game.walls.Remove(game.walls[i]);
+                        View.HideWall(game.Walls[i]);
+                        game.Walls.Remove(game.Walls[i]);
                     }
                 }
                 #endregion
@@ -112,7 +112,7 @@ namespace Tanks.ConsoleUI
         static void EndGame(Game game)
         {
             Console.Clear();
-            Console.WriteLine("GAME OVER! Your Score is:{0}", game.score);
+            Console.WriteLine("GAME OVER! Your Score is:{0}", game.Score);
             Console.WriteLine("Press Return To Exit...");
             Console.ReadLine();
         }

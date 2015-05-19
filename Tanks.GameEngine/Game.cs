@@ -8,94 +8,73 @@ using Tanks.GameEngine.GameObjects.UnmovableObjects;
 
 namespace Tanks.GameEngine
 {
-    // Review remark from IP:
-    // бажано винести в окремий файл
-    public enum GameStatus
-    {
-        ReadyToStart, InProgress, Completed
-    }
     public class Game
     {
-        public GameStatus gameStatus;
-        #region Public Fields
-        // Review remark from IP:
-         // а чому поля класу  - публічні ?
-        public int score;
-        public int enemiesCount;
-        public Player Player { get; set; }
-        public GameBoard GameBoard { get; protected set; }
+                
+        #region Fields&Properties
 
-        // Review remark from IP:
-        // Імені пропертів бажано починати з великих літер
-        public List<Bullet> bullets { get; set; }
-        public List<Enemy> enemies { get; set; }
-        public List<Wall> walls { get; set; }
+        public GameStatus gameStatus;
+        public int EnemiesCount { get; set; }
+        public int Score { get; set; }
+        public PlayerBase PlBase { get; set; }
+        public Player Player { get; set; }
+        public GameBoard GameBoard { get; private set; }
+        public List<Bullet> Bullets { get; private set; }
+        public List<Enemy> Enemies { get; private set; }
+        public List<Wall> Walls { get; private set; }
+
         #endregion
+
         #region Constructor
-        public Game()
+        
+        public  Game()
         {
-            gameStatus = GameStatus.ReadyToStart;
+           gameStatus = GameStatus.ReadyToStart;
         }
+        
         #endregion
-        #region StatusMethods
+
+        #region Public Methods
+
         public void Start()
         {
-            this.gameStatus = GameStatus.InProgress;
-            score = 0;
-            walls = new List<Wall>();
-            enemies = new List<Enemy>();
-            bullets = new List<Bullet>();
+            gameStatus = GameStatus.InProgress;
+            Score = 0;
+            Walls = new List<Wall>();
+            Enemies = new List<Enemy>();
+            Bullets = new List<Bullet>();
             GameBoard = new GameBoard();
             InitializeMap();
-            PlayerInitialize();
-            EnemyInitialize();
+            InitializePlayer();
+            InitializeEnemy();
         }
+       
         public bool Stop()
         {
-            if (Player.Lives < 0 || enemiesCount < 0)
+            gameStatus = GameStatus.Completed;
+            return Player.Lives < 0 || EnemiesCount < 0 || !PlBase.IsAlive;
+        }
+
+        public void AddEnemy()
+        {
+            Enemy e;
+            if (EnemiesCount % 2 == 0)
             {
-                this.gameStatus = GameStatus.Completed;
-                return true;
-            }
-            return false;
-        }
-        #endregion
-        #region Helpers
-        private void PlayerInitialize()
-        {
-            Player = new Player(7, 18);
-            GameBoard.AddObject(Player);
-        }
-        private void EnemyInitialize()
-        {
-            enemiesCount = 10;
-            Enemy e1 = new Enemy(7, 3);
-            Enemy e2 = new Enemy(1, 1);
-            Enemy e3 = new Enemy(14, 1);
-            Enemy e4 = new Enemy(9, 9);
-            enemies.Add(e1);
-            enemies.Add(e2);
-            enemies.Add(e3);
-            enemies.Add(e4);
-            GameBoard.AddObject(e1);
-            GameBoard.AddObject(e2);
-            GameBoard.AddObject(e3);
-            GameBoard.AddObject(e4);
-        }
-        #endregion
-        #region PublicGameMethods
-        public bool CheckPlayerIsAlive()
-        {
-            if (Player.IsAlive == false)
-            {
-                return true;
+                e = new Enemy(1, 1);
             }
             else
             {
-                return false;
+                e = new Enemy(14, 1);
             }
+            Enemies.Add(e);
+            GameBoard.AddObject(e);
         }
-       
+        
+        public bool CheckPlayerIsAlive()
+        {
+            return !Player.IsAlive;            
+        }
+              
         public void PlayerReborn()
         {           
                 Player.X = 7;
@@ -107,89 +86,114 @@ namespace Tanks.GameEngine
         public void Fire(Player player)
         {
             Bullet b = new Bullet(player.X, player.Y, player.Direction, true);
-            bullets.Add(b);
+            Bullets.Add(b);
             GameBoard.AddObject(b);
         }
 
         public void EnemyFire(Enemy e)
         {
             Bullet b = new Bullet(e.X, e.Y, e.Direction, false);
-            bullets.Add(b);
+            Bullets.Add(b);
             GameBoard.AddObject(b);
         }
 
         public void CheckBulletsAlive()
         {
-            for (int i = 0; i < bullets.Count; i++)
+            for (int i = 0; i < Bullets.Count; i++)
             {
-                if (bullets[i].IsAlive == false)
+                if (Bullets[i].IsAlive == false)
                 {
-                    bullets.Remove(bullets[i]);
+                    Bullets.Remove(Bullets[i]);
                 }
             }
         }
 
-        public void CheckEnemiesAlive()
+        public bool CheckEnemiesAlive()
         {
-            for (int i = 0; i < enemies.Count; i++)
+            for (int i = 0; i < Enemies.Count; i++)
             {
-                if (enemies[i].IsAlive == false)
+                if (!Enemies[i].IsAlive)
                 {
                     RaiseScore();
-                    enemies.RemoveAt(i);
-                    enemiesCount--;
+                    Enemies.RemoveAt(i);
+                    EnemiesCount--;
+                    return true;
                 }
-                if (enemies.Count < 4)
+                if (Enemies.Count < 4 && EnemiesCount > 2)
                 {
                     AddEnemy();
-                }
+                }                
             }
-        }
-        public bool CheckWallDestruction(Wall wall)
-        {
-            if (wall.IsAlive == false)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public void DestructWall(Wall wall)
-        {
-            walls.Remove(wall);
+            return false;
         }
 
-        public void AddEnemy()
+        public bool CheckWallDestruction(Wall wall)
         {
-            Enemy e = new Enemy(14, 1);
-            enemies.Add(e);
-            GameBoard.AddObject(e);
+            return !wall.IsAlive;            
         }
+
+        public void DestructWall(Wall wall)
+        {
+            Walls.Remove(wall);
+        }
+
+        public bool CheckBaseIsAlive(PlayerBase plBase)
+        {
+            return plBase.IsAlive;
+        }
+
+        #endregion
+
+        #region Private Methods
+       
 
         public void RaiseScore()
         {
-            score += 100;
+            Score += 100;
         }
 
-        public void InitializeMap()
+        private void InitializeMap()
         {
             World world = new World();
-            
             for (int i = 0; i < 20; i++)
             {
                 for (int j = 0; j < 20; j++)
                 {
                     switch (World.MapArray[j, i])
                     {
-                        case '1': GameBoard.AddObject(new GameObjects.UnmovableObjects.Concrete(i, j)); break;
-                        case '2': Wall wall = new Wall(i, j); GameBoard.AddObject(wall); walls.Add(wall); break;
+                        case '1': GameBoard.AddObject(new Concrete(i, j)); break;
+                        case '2': Wall wall = new Wall(i, j); GameBoard.AddObject(wall); Walls.Add(wall); break;
                         default: break;
                     }
                 }
             }
         }
+
+        private void InitializePlayer()
+        {
+            Player = new Player(7, 18);
+            PlBase = new PlayerBase(9, 18);
+            GameBoard.AddObject(PlBase);
+            GameBoard.AddObject(Player);
+        }
+
+        private void InitializeEnemy()
+        {
+            EnemiesCount = 10;
+            Enemy e1 = new Enemy(7, 3);
+            Enemy e2 = new Enemy(1, 1);
+            Enemy e3 = new Enemy(14, 1);
+            Enemy e4 = new Enemy(9, 9);
+            Enemies.Add(e1);
+            Enemies.Add(e2);
+            Enemies.Add(e3);
+            Enemies.Add(e4);
+            GameBoard.AddObject(e1);
+            GameBoard.AddObject(e2);
+            GameBoard.AddObject(e3);
+            GameBoard.AddObject(e4);
+        }
+
         #endregion
     }
 }

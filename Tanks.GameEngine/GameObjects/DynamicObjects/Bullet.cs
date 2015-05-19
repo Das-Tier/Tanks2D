@@ -13,9 +13,12 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
         #endregion
 
         #region Constructor
+        
         public Bullet(int x, int y, Direction direction, bool ofPlayer)
             : base(x, y)
         {
+            X = x;
+            Y = y;
             OfPlayer = ofPlayer;
             IsAlive = true;
             Direction = direction;
@@ -29,7 +32,7 @@ namespace Tanks.GameEngine.GameObjects.DynamicObjects
             switch (Direction)
             {
                 case Direction.Up: dy -= 1; break;
-                case Direction.Down: dy += 1; break;
+                case Direction.Down: dy +=1; break;
                 case Direction.Left: dx -= 1; break;
                 case Direction.Right: dx += 1; break;
             }

@@ -9,13 +9,12 @@ namespace Tanks.GameEngine.GameObjects
     {
         public BaseGameObject(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
         public bool IsAlive { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public GameBoard Board { get; set; }
-       
-    }
+   }
 }

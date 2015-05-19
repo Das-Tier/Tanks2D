@@ -59,5 +59,159 @@ namespace Tanks.DesktopUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap bullet {
+            get {
+                object obj = ResourceManager.GetObject("bullet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap concrete {
+            get {
+                object obj = ResourceManager.GetObject("concrete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap enemy_downx30 {
+            get {
+                object obj = ResourceManager.GetObject("enemy_downx30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap enemy_leftx30 {
+            get {
+                object obj = ResourceManager.GetObject("enemy_leftx30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap enemy_rightx30 {
+            get {
+                object obj = ResourceManager.GetObject("enemy_rightx30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap enemy_upx30 {
+            get {
+                object obj = ResourceManager.GetObject("enemy_upx30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream explode {
+            get {
+                return ResourceManager.GetStream("explode", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap explosion1 {
+            get {
+                object obj = ResourceManager.GetObject("explosion1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream game_over {
+            get {
+                return ResourceManager.GetStream("game_over", resourceCulture);
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream hit_wall {
+            get {
+                return ResourceManager.GetStream("hit_wall", resourceCulture);
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream level_start {
+            get {
+                return ResourceManager.GetStream("level_start", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Icon MainIcon {
+            get {
+                object obj = ResourceManager.GetObject("MainIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream pause {
+            get {
+                return ResourceManager.GetStream("pause", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap player_base {
+            get {
+                object obj = ResourceManager.GetObject("player_base", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream player_death {
+            get {
+                return ResourceManager.GetStream("player_death", resourceCulture);
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream shot {
+            get {
+                return ResourceManager.GetStream("shot", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap skinmini {
+            get {
+                object obj = ResourceManager.GetObject("skinmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tank11 {
+            get {
+                object obj = ResourceManager.GetObject("tank11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tank21 {
+            get {
+                object obj = ResourceManager.GetObject("tank21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tank31 {
+            get {
+                object obj = ResourceManager.GetObject("tank31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tank41 {
+            get {
+                object obj = ResourceManager.GetObject("tank41", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap wall {
+            get {
+                object obj = ResourceManager.GetObject("wall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
