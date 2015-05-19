@@ -13,7 +13,7 @@ namespace Tanks.ConsoleUI
         public static void ShowStats(Game game)
         {
             Console.SetCursorPosition(24, 1);
-            Console.WriteLine("Lives:{0}; Score:{1}; Enemies:{2}", game.Player.Lives, game.Score, game.enemiesCount); 
+            Console.WriteLine("Lives:{0}; Score:{1}; Enemies:{2}", game.Player.Lives, game.Score, game.EnemiesCount); 
         }
         #endregion
         #region MapVisaulisation
