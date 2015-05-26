@@ -12,7 +12,9 @@ namespace Tanks.GameEngine
     {
                 
         #region Fields&Properties
-
+        /*
+         * ВВ: поля не повинні бути публічними.
+         */
         public GameStatus gameStatus;
         public int EnemiesCount { get; set; }
         public int Score { get; set; }
